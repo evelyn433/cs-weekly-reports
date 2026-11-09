@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aira Weekly Review — Nov 1 to Nov 7, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --credix-black: #000000;
+    --credix-white: #FFFFFF;
+    --credix-yellow: #F8BB00;
+    --credix-blue: #2579F5;
+    --credix-red: #F62431;
+    --credix-pink: #FA87A8;
+    --credix-green: #003C1E;
+    --credix-gray: #F1F1F1;
+    --credix-gray-text: #6b6b6b;
+    --good: #1f7a3f;
+    --bad: #c02531;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--credix-white);
+    color: var(--credix-black);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .page {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 56px 48px 80px 48px;
+  }
+  .tri-bar {
+    display: flex;
+    height: 6px;
+    width: 100%;
+    margin-bottom: 36px;
+  }
+  .tri-bar > div { flex: 1; }
+  .tri-bar .y { background: var(--credix-yellow); }
+  .tri-bar .b { background: var(--credix-blue); }
+  .tri-bar .r { background: var(--credix-red); }
+
+  h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: var(--credix-black);
+    margin: 0;
+    line-height: 1.2;
+  }
+  h1 { font-size: 32px; margin-bottom: 8px; }
+  h2 {
+    font-size: 22px;
+    margin-top: 48px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h3 {
+    font-size: 15px;
+    margin-top: 24px;
+    margin-bottom: 10px;
+  }
+  .meta {
+    color: var(--credix-gray-text);
+    font-size: 12px;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+  .subject-label {
+    color: var(--credix-blue);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  p { margin: 10px 0; }
+  strong { font-weight: 700; }
+  a { color: var(--credix-blue); }
+
+  .callout {
+    background: var(--credix-gray);
+    padding: 24px 28px;
+    margin: 16px 0 0 0;
+  }
+  .callout p { margin: 8px 0; }
+  .callout p:first-child { margin-top: 0; }
+  .callout p:last-child { margin-bottom: 0; }
+
+  .totals-line {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    align-items: baseline;
+    font-size: 15px;
+    margin: 10px 0 24px 0;
+  }
+  .totals-line .big {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+  }
+  .delta-pos { color: var(--good); font-weight: 700; }
+  .delta-neg { color: var(--bad); font-weight: 700; }
+  .delta-neutral { color: var(--credix-gray-text); font-weight: 700; }
+
+  .vol-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 16px;
+  }
+  .vol-card {
+    background: var(--credix-gray);
+    padding: 20px 22px;
+  }
+  .vol-card-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .vol-card-title .num {
+    font-size: 22px;
+  }
+  .vol-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  .vol-row:last-child { border-bottom: none; }
+  .vol-row .label { font-size: 13px; }
+  .vol-row .v {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .vol-row .v small {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
+    color: var(--credix-gray-text);
+    font-size: 11px;
+    margin-left: 6px;
+  }
+
+  .kpi-section-title {
+    background: #E8F1FE;
+    padding: 12px 18px;
+    margin-top: 20px;
+    margin-bottom: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .kpi-section-title.collections { background: #FDF3D6; }
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+  .kpi {
+    background: #EAF5EC;
+    padding: 18px 20px;
+  }
+  .kpi-name {
+    font-size: 12px;
+    color: var(--credix-gray-text);
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .kpi-value {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .kpi-meta {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #333;
+  }
+  .kpi-delta {
+    margin-top: 4px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .kpi-status {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    letter-spacing: 0.5px;
+    margin-top: 6px;
+  }
+  .status-good { background: #cce6d3; color: #1f7a3f; }
+  .status-bad { background: #f8d4d7; color: #c02531; }
+  .status-warn { background: #fde7b3; color: #8a5d00; }
+
+  .response-rate-line {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 700;
+    margin: 14px 0 8px 0;
+    font-size: 14px;
+  }
+
+  .collections-kpi {
+    background: var(--credix-gray);
+    padding: 18px 22px;
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .collections-kpi .item {
+    display: flex;
+    flex-direction: column;
+  }
+  .collections-kpi .item .lbl {
+    font-size: 11px;
+    color: var(--credix-gray-text);
+    letter-spacing: 0.5px;
+  }
+  .collections-kpi .item .val {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+  }
+  .collections-kpi .item .val small {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--credix-gray-text);
+    font-weight: 400;
+    margin-left: 6px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 13px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--credix-gray);
+  }
+  th {
+    background: var(--credix-black);
+    color: var(--credix-white);
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  tbody tr:nth-child(even) { background: var(--credix-gray); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.tag { font-family: 'IBM Plex Mono', monospace; font-size: 12px; }
+
+  .insight-box {
+    border-left: 3px solid var(--credix-yellow);
+    background: var(--credix-gray);
+    padding: 16px 20px;
+    margin: 14px 0;
+  }
+  .insight-box h3 { margin-top: 0; }
+  .insight-box.bug { border-left-color: var(--credix-red); }
+  .insight-box.info { border-left-color: var(--credix-blue); }
+
+  .detractor {
+    border-left: 3px solid var(--credix-red);
+    background: var(--credix-gray);
+    padding: 14px 18px;
+    margin: 10px 0;
+    font-size: 13px;
+  }
+  .detractor .ticket-id {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    margin-right: 8px;
+  }
+  .detractor .meta-row {
+    color: var(--credix-gray-text);
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+  .detractor .comment {
+    font-style: italic;
+    margin: 6px 0;
+  }
+  .detractor .tag-list {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--credix-blue);
+    margin-top: 6px;
+  }
+
+  .tag-bar {
+    display: grid;
+    grid-template-columns: 220px 1fr 50px;
+    align-items: center;
+    gap: 12px;
+    margin: 4px 0;
+    font-size: 12px;
+  }
+  .tag-bar .lbl { font-family: 'IBM Plex Mono', monospace; }
+  .tag-bar .bar-track {
+    background: var(--credix-gray);
+    height: 16px;
+    position: relative;
+  }
+  .tag-bar .bar-fill {
+    background: var(--credix-blue);
+    height: 100%;
+  }
+  .tag-bar .v {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .daily-table th, .daily-table td { font-size: 12px; padding: 6px 10px; }
+  .daily-table .date { font-family: 'IBM Plex Mono', monospace; }
+
+  .footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--credix-gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 11px;
+    color: var(--credix-gray-text);
+  }
+  .footer .url {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: var(--credix-black);
+  }
+
+  .sec-icon {
+    display: inline-block;
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .okr-block {
+    border-left: 3px solid var(--credix-black);
+    padding-left: 16px;
+    margin: 16px 0;
+    font-size: 13px;
+  }
+  .okr-block .l { font-family: 'Poppins', sans-serif; font-weight: 700; }
+
+  @media (max-width: 720px) {
+    .page { padding: 32px 20px; }
+    .vol-grid { grid-template-columns: 1fr; }
+    .kpi-grid { grid-template-columns: 1fr; }
+    .tag-bar { grid-template-columns: 140px 1fr 40px; }
+  }
+</style>
+<style>
+  .kpi.warn { background: #FDF3D6; }
+  .kpi.bad { background: #FBE3E5; }
+  .note-small { font-size: 12px; color: var(--credix-gray-text); margin: 6px 0 0 0; }
+  .ex { border-left: 3px solid var(--credix-blue); background: var(--credix-gray); padding: 12px 16px; margin: 8px 0; font-size: 13px; }
+  .ex.red { border-left-color: var(--credix-red); }
+  .ex .id { font-family: 'Poppins', sans-serif; font-weight: 700; margin-right: 8px; }
+  .ex .q { font-style: italic; }
+  .pill { display:inline-block; font-size:10px; font-weight:700; padding:2px 8px; border-radius:10px; background:#E8F1FE; color:#1a5bc4; letter-spacing:.5px; }
+  .pill.done { background:#E3F4E8; color:#1E7A3C; }
+  .pill.review { background:#FDF3D6; color:#8A6400; }
+  .tbl-wrap { overflow-x: auto; }
+  .pillar { font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--credix-gray-text); margin: 28px 0 -12px 0; }
+  .funnel { display:flex; height: 34px; border-radius: 4px; overflow:hidden; margin: 14px 0 8px 0; }
+  .funnel div { display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:#000; white-space:nowrap; overflow:hidden; }
+  .seg-b { background:#2579F5; color:#fff !important; }
+  .seg-c { background:#9DC2FA; }
+  .seg-d { background:#FBE3A6; }
+  .seg-e { background:#F8BB00; }
+  .seg-a { background:#D9D9D9; }
+  .seg-f { background:#BDBDBD; }
+  .legend { display:flex; flex-wrap:wrap; gap:14px; font-size:11px; color:var(--credix-gray-text); margin: 4px 0 10px 0; }
+  .legend span::before { content:''; display:inline-block; width:10px; height:10px; margin-right:6px; vertical-align:-1px; border-radius:2px; background: var(--c); }
+  .l2 { margin-top: 14px; }
+  .l2-row { display:grid; grid-template-columns: 200px 1fr 270px; align-items:center; gap:10px; padding:5px 0; border-bottom:1px solid #eee; font-size:12px; }
+  .l2-name { font-family:'IBM Plex Mono', monospace; }
+  .l2-bar { display:flex; height:16px; }
+  .l2-bar div { height:100%; }
+  .l2-val { font-size:10.5px; white-space:nowrap; color:var(--credix-gray-text); text-align:right; }
+  .l2-val b { color:#000; }
+  @media (max-width: 760px) { .l2-row { grid-template-columns: 1fr; } .l2-val { text-align:left; } }
+</style>
+<style>
+  .pill.bad { background:#FBE3E5; color:#B3121F; }
+  .coll-title { color:#1a5bc4; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="tri-bar"><div class="y"></div><div class="b"></div><div class="r"></div></div>
+  <div class="subject-label">Aira Report · Edition 2</div>
+  <h1>November 9, 2026 · Aira Weekly Review</h1>
+  <div class="meta">Period: November 1, 2026 to November 7, 2026 · Comparison: October 25, 2026 to October 31, 2026</div>
+  <div class="meta">Scope: Support (CrediPay email, WhatsApp Support, CrediPay widget) and WhatsApp Collections (real intent), reported separately · Source: credix-mainnet.chatwoot.public_* (BigQuery)</div>
+
+  <div class="insight-box info">
+    <p style="margin: 0 0 8px 0;"><strong>What changed since edition 1</strong></p>
+    <p style="margin: 0 0 6px 0;">1. <strong>WhatsApp Collections is back in scope</strong>, as agreed with leadership on Nov 4. It has its own section and is never added to Support: its volume and profile are different, and a combined number would hide Support. Collections counts only real-intent conversations (no noise label and at least one customer message that is not an automatic reply).</p>
+    <p style="margin: 0 0 6px 0;">2. "No human reply within 1 business day" now <strong>excludes holidays</strong> (Nov 2 this week).</p>
+    <p style="margin: 0 0 6px 0;">3. Edition 1's Support deflection for Oct 25–31 is <strong>restated from 30.7% to 30.4%</strong>: refreshed data moved one conversation from "resolved by Aira alone" to "handled by a human". All comparisons below use the restated figures.</p>
+    <p style="margin: 0;">Definitions are otherwise unchanged; see the <a href="https://claude.ai/artifact/A5MqbFeMj4Mz7VvZTeuGMP" style="color:#1a5bc4;">Aira baseline memo (v3)</a>.</p>
+  </div>
+
+  <h2><span class="sec-icon">📋</span> Executive Summary</h2>
+  <div class="callout">
+    <p><strong>Support</strong> deflection was <strong>28.3%</strong> (56 of 198 inquiries), down from 30.4%. The drop comes from the mix, not from Aira: the Nov 2 holiday cut WhatsApp and widget volume, while email, which Aira does not answer, rose to 29% of inquiries. Among the conversations Aira handled, the share it resolved on its own rose to <strong>40.3%</strong>, from 38.2%. WhatsApp reached 42.3% and the widget 30.0%, with 53% of widget conversations needing relay.</p>
+    <p>In <strong>WhatsApp Collections</strong>, Aira resolved <strong>76.2%</strong> of the 328 real-intent conversations on its own (74.8% the week before). Boleto requests, three in four conversations, are deflected at 83.7%. Renegotiation is the weakest topic at 38.9%, consistent with the known bug: Aira agrees a renegotiation but cannot generate the new boleto.</p>
+    <p>On quality, technical-failure messages fell from 20 to <strong>4</strong> in Support (2 in Collections). <strong>15.8%</strong> of Support human-required conversations got no human reply within one business day (9.1% in Collections). One relay note corrected a wrong answer.</p>
+    <p>On measurement, <code>bot-resolved</code> tagging is still not working: the fix agreed for Nov 6 was not delivered, so tag-based figures remain unreliable. The deflection rate does not depend on tags. The security filter blocked 6 Support conversations, again on ordinary boleto requests. Relay fell to 39 notes in Support (81 the week before), 97% written by Evelyn.</p>
+  </div>
+
+  <!-- ============ PILLAR 1: SUPPORT ============ -->
+  <div class="pillar">Pillar 1 · Efficiency</div>
+  <h2><span class="sec-icon">🤖</span> Deflection — Support</h2>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="kpi-name">Deflection rate</div><div class="kpi-value">28.3%</div><div class="kpi-meta">56 of 198 inquiries · Target: under review<br>prev: 30.4% (restated)</div><div class="kpi-delta delta-neg">−2.1 pp</div></div>
+    <div class="kpi"><div class="kpi-name">Resolved with relay (partial deflection)</div><div class="kpi-value">12.1%</div><div class="kpi-meta">24 inquiries<br>prev: 17.0%</div><div class="kpi-delta">−4.9 pp</div></div>
+    <div class="kpi"><div class="kpi-name">Reach (Aira responded)</div><div class="kpi-value">70.2%</div><div class="kpi-meta">139 of 198 · email share up to 29%<br>prev: 79.5%</div><div class="kpi-delta delta-neg">−9.3 pp</div></div>
+  </div>
+
+  <h3>Where every Support inquiry ended</h3>
+  <div class="funnel">
+    <div class="seg-b" style="width:28.3%">28.3%</div>
+    <div class="seg-c" style="width:12.1%">12.1%</div>
+    <div class="seg-d" style="width:7.6%">7.6%</div>
+    <div class="seg-e" style="width:20.2%">20.2%</div>
+    <div class="seg-a" style="width:29.8%">29.8%</div>
+    <div class="seg-f" style="width:2.0%"></div>
+  </div>
+  <div class="legend">
+    <span style="--c:#2579F5">Resolved by Aira alone (56)</span>
+    <span style="--c:#9DC2FA">With relay (24)</span>
+    <span style="--c:#FBE3A6">Login approval only (15)</span>
+    <span style="--c:#F8BB00">Handled by a human (40)</span>
+    <span style="--c:#D9D9D9">Not touched by Aira (59)</span>
+    <span style="--c:#BDBDBD">Other human note (4)</span>
+  </div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Channel</th><th class="num">Inquiries</th><th class="num">Aira alone</th><th class="num">Relay</th><th class="num">Login only</th><th class="num">Human</th><th class="num">Not touched</th><th class="num">Deflection</th></tr></thead>
+    <tbody>
+      <tr><td>WhatsApp Support</td><td class="num">111</td><td class="num">47</td><td class="num">8</td><td class="num">15</td><td class="num">35</td><td class="num">2</td><td class="num"><strong>42.3%</strong></td></tr>
+      <tr><td>CrediPay widget</td><td class="num">30</td><td class="num">9</td><td class="num">16</td><td class="num">0</td><td class="num">5</td><td class="num">0</td><td class="num"><strong>30.0%</strong></td></tr>
+      <tr><td>CrediPay email</td><td class="num">57</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">57</td><td class="num"><strong>0.0%</strong></td></tr>
+      <tr style="background: #E8F1FE; font-weight: 700;"><td><strong>TOTAL</strong></td><td class="num">198</td><td class="num">56</td><td class="num">24</td><td class="num">15</td><td class="num">40</td><td class="num">59</td><td class="num"><strong>28.3%</strong></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note-small">Four WhatsApp conversations had only another kind of human internal note and are counted outside the deflected classes. Daily volume: Mon Nov 2 (holiday) had 9 conversations against a usual Monday of 46.</p>
+
+  <h3>Deflection by topic (L2) — Support</h3>
+  <div class="legend" style="margin-top:8px;"><span style="--c:#2579F5">Resolved by Aira alone</span><span style="--c:#9DC2FA">With relay (partial)</span><span style="--c:#F8BB00">Human path (human, login only, not touched)</span></div>
+  <div class="l2">
+<div class="l2-row"><div class="l2-name">l2_boleto_requested</div><div class="l2-bar"><div class="seg-b" style="width:39.4%"></div><div class="seg-c" style="width:2.8%"></div><div class="seg-e" style="width:57.7%"></div></div><div class="l2-val"><b>71</b> · 28/2/41 · <b>39.4%</b> defl · 3% relay</div></div>
+<div class="l2-row"><div class="l2-name">l2_credit_block_inquiry</div><div class="l2-bar"><div class="seg-b" style="width:18.3%"></div><div class="seg-c" style="width:12.7%"></div><div class="seg-e" style="width:23.9%"></div></div><div class="l2-val"><b>39</b> · 13/9/17 · <b>33.3%</b> defl · 23% relay</div></div>
+<div class="l2-row"><div class="l2-name">l2_credit_limit_check</div><div class="l2-bar"><div class="seg-b" style="width:11.3%"></div><div class="seg-c" style="width:2.8%"></div><div class="seg-e" style="width:8.5%"></div></div><div class="l2-val"><b>16</b> · 8/2/6 · <b>50.0%</b> defl · 12% relay</div></div>
+<div class="l2-row"><div class="l2-name">l2_credit_limit_increase</div><div class="l2-bar"><div class="seg-b" style="width:4.2%"></div><div class="seg-c" style="width:5.6%"></div><div class="seg-e" style="width:12.7%"></div></div><div class="l2-val"><b>16</b> · 3/4/9 · <b>18.8%</b> defl · 25% relay</div></div>
+<div class="l2-row"><div class="l2-name">l2_informational_general</div><div class="l2-bar"><div class="seg-b" style="width:5.6%"></div><div class="seg-c" style="width:5.6%"></div><div class="seg-e" style="width:11.3%"></div></div><div class="l2-val"><b>16</b> · 4/4/8 · <b>25.0%</b> defl · 25% relay</div></div>
+<div class="l2-row"><div class="l2-name">l2_payment_proof_sent</div><div class="l2-bar"><div class="seg-b" style="width:5.6%"></div><div class="seg-c" style="width:0.0%"></div><div class="seg-e" style="width:12.7%"></div></div><div class="l2-val"><b>13</b> · 4/0/9 · <b>30.8%</b> defl · 0% relay</div></div>
+<div class="l2-row"><div class="l2-name">l2_platform_technical_error</div><div class="l2-bar"><div class="seg-b" style="width:1.4%"></div><div class="seg-c" style="width:5.6%"></div><div class="seg-e" style="width:9.9%"></div></div><div class="l2-val"><b>12</b> · 1/4/7 · <b>8.3%</b> defl · 33% relay</div></div>
+<div class="l2-row"><div class="l2-name">l2_noise_or_spam</div><div class="l2-bar"><div class="seg-b" style="width:2.8%"></div><div class="seg-c" style="width:0.0%"></div><div class="seg-e" style="width:9.9%"></div></div><div class="l2-val"><b>9</b> · 2/0/7 · <b>22.2%</b> defl · 0% relay</div></div>
+<div class="l2-row"><div class="l2-name">l2_boleto_renegotiation</div><div class="l2-bar"><div class="seg-b" style="width:2.8%"></div><div class="seg-c" style="width:0.0%"></div><div class="seg-e" style="width:8.5%"></div></div><div class="l2-val"><b>8</b> · 2/0/6 · <b>25.0%</b> defl · 0% relay</div></div>
+<div class="l2-row"><div class="l2-name">l2_buyer_onboarding</div><div class="l2-bar"><div class="seg-b" style="width:1.4%"></div><div class="seg-c" style="width:5.6%"></div><div class="seg-e" style="width:2.8%"></div></div><div class="l2-val"><b>7</b> · 1/4/2 · <b>14.3%</b> defl · 57% relay</div></div>
+<div class="l2-row"><div class="l2-name">l2_financial_reconciliation</div><div class="l2-bar"><div class="seg-b" style="width:0.0%"></div><div class="seg-c" style="width:0.0%"></div><div class="seg-e" style="width:9.9%"></div></div><div class="l2-val"><b>7</b> · 0/0/7 · <b>0.0%</b> defl · 0% relay</div></div>
+<div class="l2-row"><div class="l2-name">l2_payment_processing_error</div><div class="l2-bar"><div class="seg-b" style="width:0.0%"></div><div class="seg-c" style="width:0.0%"></div><div class="seg-e" style="width:7.0%"></div></div><div class="l2-val"><b>5</b> · 0/0/5 · <b>0.0%</b> defl · 0% relay</div></div>
+<div class="l2-row"><div class="l2-name">l2_order_delivery_issue</div><div class="l2-bar"><div class="seg-b" style="width:1.4%"></div><div class="seg-c" style="width:1.4%"></div><div class="seg-e" style="width:2.8%"></div></div><div class="l2-val"><b>4</b> · 1/1/2 · <b>25.0%</b> defl · 25% relay</div></div>
+<div class="l2-row"><div class="l2-name">l2_payment_terms_extension</div><div class="l2-bar"><div class="seg-b" style="width:0.0%"></div><div class="seg-c" style="width:0.0%"></div><div class="seg-e" style="width:1.4%"></div></div><div class="l2-val"><b>1</b> · 0/0/1 · <b>0.0%</b> defl · 0% relay</div></div>
+<div class="l2-row"><div class="l2-name">no L2 label</div><div class="l2-bar"><div class="seg-b" style="width:5.6%"></div><div class="seg-c" style="width:1.4%"></div><div class="seg-e" style="width:26.8%"></div></div><div class="l2-val"><b>24</b> · 4/1/19 · <b>16.7%</b> defl · 4% relay</div></div>
+  </div>
+  <p class="note-small">Right column: total · Aira alone / relay / human path · deflection % · relay %. A ticket with several L2 labels counts under each. Bars are scaled to the largest topic.</p>
+  <div class="insight-box info"><p style="margin:0;"><strong>Top drivers.</strong> Boleto requests remain the largest topic (71 tickets), at 39.4% deflected. Credit limit checks reached 50.0%. The lowest deflection is on platform technical errors (8.3%, 33% relay), buyer onboarding (14.3%, 57% relay), limit increases (18.8%), and financial reconciliation and payment processing errors (0%). Unique-ticket deflection: <strong>28.3%</strong>, the same as the headline.</p></div>
+
+  <h3>Why Aira did not resolve: reasons Aira logged — Support</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Channel</th><th class="num">"I don't know how to deal"</th><th class="num">Security filter</th><th class="num">Login approval</th></tr></thead>
+    <tbody>
+      <tr><td>WhatsApp Support</td><td class="num">0 <small>(prev 0)</small></td><td class="num">5 <small>(prev 7)</small></td><td class="num">31 <small>(prev 33)</small></td></tr>
+      <tr><td>CrediPay widget</td><td class="num">0 <small>(prev 0)</small></td><td class="num">1 <small>(prev 3)</small></td><td class="num">4 <small>(prev 15)</small></td></tr>
+      <tr style="background: #E8F1FE; font-weight: 700;"><td><strong>TOTAL</strong></td><td class="num">0 <small>(prev 0)</small></td><td class="num">6 <small>(prev 10)</small></td><td class="num">35 <small>(prev 48)</small></td></tr>
+    </tbody>
+  </table></div>
+  <p style="font-size:13px; margin-top: 14px;"><strong>Security filter examples</strong> (likely false positives):</p>
+  <div class="ex"><span class="id">#57450</span> <span class="q">"Verificar sim tem boletos com vcs em atraso"</span> (Check whether we have overdue boletos with you)</div>
+  <div class="ex"><span class="id">#57716</span> <span class="q">"Por gentileza, vcs poderiam enviar os boletos em aberto da [company]?"</span> (Could you please send the open boletos for [company]?)</div>
+
+  <h3>Relay — Support</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Channel</th><th class="num">Instruction notes</th><th class="num">Conversations</th><th class="num">Prev notes</th><th class="num">Written by Evelyn</th></tr></thead>
+    <tbody>
+      <tr><td>WhatsApp Support</td><td class="num">16</td><td class="num">11</td><td class="num">32</td><td class="num">94%</td></tr>
+      <tr><td>CrediPay widget</td><td class="num">23</td><td class="num">17</td><td class="num">49</td><td class="num">100%</td></tr>
+      <tr style="background: #E8F1FE; font-weight: 700;"><td><strong>TOTAL</strong></td><td class="num">39</td><td class="num">28</td><td class="num">81</td><td class="num">97%</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note-small">Relay by cause will be added once relay notes are tagged by cause.</p>
+
+  <!-- ============ PILLAR 1: COLLECTIONS ============ -->
+  <h2 class="coll-title"><span class="sec-icon">💳</span> Deflection — WhatsApp Collections</h2>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="kpi-name">Deflection rate (real intent)</div><div class="kpi-value">76.2%</div><div class="kpi-meta">250 of 328 · Target: under review<br>prev: 74.8%</div><div class="kpi-delta delta-pos">+1.4 pp</div></div>
+    <div class="kpi"><div class="kpi-name">Real-intent conversations</div><div class="kpi-value">328</div><div class="kpi-meta">of 399 in the inbox<br>52 noise · 19 only automatic replies</div></div>
+    <div class="kpi"><div class="kpi-name">Reach (Aira responded)</div><div class="kpi-value">100%</div><div class="kpi-meta">328 of 328<br>prev: 99.0%</div></div>
+  </div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Week</th><th class="num">Aira alone</th><th class="num">Relay</th><th class="num">Login only</th><th class="num">Human</th><th class="num">Other note</th><th class="num">Not touched</th><th class="num">Deflection</th></tr></thead>
+    <tbody>
+      <tr><td>Nov 1–7</td><td class="num">250</td><td class="num">2</td><td class="num">2</td><td class="num">48</td><td class="num">26</td><td class="num">0</td><td class="num"><strong>76.2%</strong></td></tr>
+      <tr><td>Oct 25–31</td><td class="num">232</td><td class="num">5</td><td class="num">4</td><td class="num">60</td><td class="num">6</td><td class="num">3</td><td class="num"><strong>74.8%</strong></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note-small">Conversations with only another kind of human internal note rose from 6 to 26. This looks like a new note habit in Collections and is being checked: without those notes, the conversations would count as resolved by Aira.</p>
+  <div class="l2">
+<div class="l2-row"><div class="l2-name">l2_boleto_requested</div><div class="l2-bar"><div class="seg-b" style="width:83.7%"></div><div class="seg-c" style="width:0.0%"></div><div class="seg-e" style="width:16.3%"></div></div><div class="l2-val"><b>252</b> · 211/0/41 · <b>83.7%</b> defl · 0% relay</div></div>
+<div class="l2-row"><div class="l2-name">l2_boleto_renegotiation</div><div class="l2-bar"><div class="seg-b" style="width:5.6%"></div><div class="seg-c" style="width:0.0%"></div><div class="seg-e" style="width:8.7%"></div></div><div class="l2-val"><b>36</b> · 14/0/22 · <b>38.9%</b> defl · 0% relay</div></div>
+<div class="l2-row"><div class="l2-name">l2_payment_proof_sent</div><div class="l2-bar"><div class="seg-b" style="width:6.7%"></div><div class="seg-c" style="width:0.4%"></div><div class="seg-e" style="width:3.6%"></div></div><div class="l2-val"><b>27</b> · 17/1/9 · <b>63.0%</b> defl · 4% relay</div></div>
+<div class="l2-row"><div class="l2-name">l2_credit_block_inquiry</div><div class="l2-bar"><div class="seg-b" style="width:4.0%"></div><div class="seg-c" style="width:0.0%"></div><div class="seg-e" style="width:4.0%"></div></div><div class="l2-val"><b>20</b> · 10/0/10 · <b>50.0%</b> defl · 0% relay</div></div>
+<div class="l2-row"><div class="l2-name">l2_wrong_contact_info</div><div class="l2-bar"><div class="seg-b" style="width:2.8%"></div><div class="seg-c" style="width:0.0%"></div><div class="seg-e" style="width:4.0%"></div></div><div class="l2-val"><b>17</b> · 7/0/10 · <b>41.2%</b> defl · 0% relay</div></div>
+<div class="l2-row"><div class="l2-name">l2_informational_general</div><div class="l2-bar"><div class="seg-b" style="width:4.4%"></div><div class="seg-c" style="width:0.0%"></div><div class="seg-e" style="width:2.0%"></div></div><div class="l2-val"><b>16</b> · 11/0/5 · <b>68.8%</b> defl · 0% relay</div></div>
+<div class="l2-row"><div class="l2-name">l2_credit_limit_increase</div><div class="l2-bar"><div class="seg-b" style="width:1.2%"></div><div class="seg-c" style="width:0.0%"></div><div class="seg-e" style="width:0.8%"></div></div><div class="l2-val"><b>5</b> · 3/0/2 · <b>60.0%</b> defl · 0% relay</div></div>
+<div class="l2-row"><div class="l2-name">l2_order_delivery_issue</div><div class="l2-bar"><div class="seg-b" style="width:0.8%"></div><div class="seg-c" style="width:0.0%"></div><div class="seg-e" style="width:1.2%"></div></div><div class="l2-val"><b>5</b> · 2/0/3 · <b>40.0%</b> defl · 0% relay</div></div>
+<div class="l2-row"><div class="l2-name">no L2 label</div><div class="l2-bar"><div class="seg-b" style="width:0.8%"></div><div class="seg-c" style="width:0.4%"></div><div class="seg-e" style="width:2.0%"></div></div><div class="l2-val"><b>8</b> · 2/1/5 · <b>25.0%</b> defl · 12% relay</div></div>
+  </div>
+  <p class="note-small">Top 8 L2 labels on real-intent conversations, same reading as the Support chart. Bars are scaled to the largest topic.</p>
+  <div class="insight-box info"><p style="margin:0;"><strong>Top drivers.</strong> Boleto requests (252 conversations) are deflected at 83.7%, the same as the week before. Proof of payment rose to 63.0%, from 45.5%. Renegotiation (36 conversations) is the weakest at 38.9%: Aira agrees the new terms but cannot generate the renegotiated boleto, and has not done so since August. Reasons Aira logged: security filter 1 (prev 4), login approval 10 (prev 9), "I don't know how to deal" 0. Relay: 7 notes in 6 conversations, mostly written by other agents.</p></div>
+
+  <!-- ============ PILLAR 2 ============ -->
+  <div class="pillar">Pillar 2 · Factual quality</div>
+  <h2><span class="sec-icon">⚠️</span> Error signals <span class="pill review" style="vertical-align:4px;">PARTIAL</span></h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Signal</th><th class="num">Support</th><th class="num">Support prev</th><th class="num">Support 4 weeks</th><th class="num">Collections</th><th class="num">Collections prev</th></tr></thead>
+    <tbody>
+      <tr><td>Technical-failure messages to customers</td><td class="num"><strong>4</strong></td><td class="num">20</td><td class="num">38</td><td class="num">2</td><td class="num">6</td></tr>
+      <tr><td>Wrong answers corrected by relay</td><td class="num"><strong>1</strong></td><td class="num">5</td><td class="num">15</td><td class="num">—</td><td class="num">—</td></tr>
+      <tr><td>Human-required with no human reply in 1 business day</td><td class="num"><strong>15.8%</strong> <small>(6/38)</small></td><td class="num">23.8%</td><td class="num">18.5%</td><td class="num"><strong>9.1%</strong> <small>(4/44)</small></td><td class="num">10.4%</td></tr>
+    </tbody>
+  </table></div>
+  <div class="ex red"><span class="id">#57590</span> <span class="q">"@Aira corrige a mensagem, os dados corretos são: [bank details]"</span> (Correct the message: the right bank details are …)</div>
+  <p class="note-small">Business days exclude holidays. Previous-week figures were recalculated with this week's rule: edition 1 showed 20.3% for Oct 25–31; on the same rule it is 23.8%. Wrong-answer corrections are tracked for Support only until relay tags by cause are in place. "Falar com Analista" presses in Collections are not reported: the button press is no longer stored as message text, so the count is unreliable. These signals will be replaced by an <strong>error rate</strong> once the definition of an error and the QA review are in place.</p>
+
+  <!-- ============ PILLAR 3 ============ -->
+  <div class="pillar">Pillar 3 · Perceived quality</div>
+  <h2><span class="sec-icon">👥</span> CSAT and SLA</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Who handled the conversation</th><th class="num">Support · week</th><th class="num">Support · 4 weeks</th><th class="num">Collections · week</th><th class="num">Collections · 4 weeks</th></tr></thead>
+    <tbody>
+      <tr><td>Resolved by Aira alone</td><td class="num">100% <small>(8)</small></td><td class="num">97.2% <small>(36)</small></td><td class="num">77.8% <small>(9)</small></td><td class="num"><strong>88.6%</strong> <small>(35)</small></td></tr>
+      <tr><td>Resolved with relay</td><td class="num">50% <small>(2)</small></td><td class="num">93.8% <small>(32)</small></td><td class="num">— <small>(0)</small></td><td class="num">100% <small>(1)</small></td></tr>
+      <tr><td>Login approval only</td><td class="num">— <small>(0)</small></td><td class="num">100% <small>(6)</small></td><td class="num">— <small>(0)</small></td><td class="num">100% <small>(1)</small></td></tr>
+      <tr><td>Handled by a human</td><td class="num">100% <small>(2)</small></td><td class="num">95.8% <small>(24)</small></td><td class="num">66.7% <small>(3)</small></td><td class="num">94.4% <small>(18)</small></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note-small">Target: 95%. Number of responses in brackets; with this few responses per week, read the 4-week columns. In Collections, conversations Aira resolves alone score below target (88.6% over four weeks), the opposite of Support. SLA (120 net business minutes, resolved tickets): see the CS Weekly Review.</p>
+
+  <!-- ============ HEALTH ============ -->
+  <h2><span class="sec-icon">🩺</span> Measurement health</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Indicator</th><th class="num">This week</th><th class="num">Prev</th><th>Reading</th></tr></thead>
+    <tbody>
+      <tr><td>Outcome tag coverage, Support (Aira conversations with bot-resolved or human-required)</td><td class="num">26.6%</td><td class="num">27.6%</td><td><code>bot-resolved</code> is still almost never applied; the fix agreed for Nov 6 was not delivered</td></tr>
+      <tr><td>Spam in Support (l2_noise_or_spam)</td><td class="num">9</td><td class="num">11</td><td>Counted as deflection when Aira handles it alone</td></tr>
+      <tr><td>Daily volume, Support</td><td class="num">1–55</td><td class="num">—</td><td>Mon Nov 2 (holiday) far below a normal Monday; other days normal</td></tr>
+    </tbody>
+  </table></div>
+
+  <!-- ============ PLAN PROGRESS ============ -->
+  <h2><span class="sec-icon">🗓️</span> Plan Progress</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Item</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Edition 1 published (CUS-17) and metric framework validated (CUS-14)</td><td><span class="pill done">DONE</span></td></tr>
+      <tr><td>Open questions reviewed with engineering (CUS-3)</td><td><span class="pill done">DONE</span></td></tr>
+      <tr><td>WhatsApp Collections back in the report</td><td><span class="pill done">DONE</span></td></tr>
+      <tr><td>Fix <code>bot-resolved</code> tagging, backfill and relay tag (CUS-4)</td><td><span class="pill bad">OVERDUE · NOV 6</span></td></tr>
+      <tr><td>Renegotiation: Aira has not generated a renegotiated boleto since August</td><td><span class="pill bad">NEW ISSUE</span></td></tr>
+      <tr><td>Parametrized Hex queries for this report (CUS-16)</td><td><span class="pill">NEXT · NOV 13</span></td></tr>
+      <tr><td>Relay and stop-reason tag taxonomy (CUS-15)</td><td><span class="pill">NEXT · NOV 13</span></td></tr>
+      <tr><td>Targets for the 4-week plan on the new metric</td><td><span class="pill review">IN REVIEW</span></td></tr>
+      <tr><td>New identification and authentication flow, to be tested in a parallel Aira flow</td><td><span class="pill">NEXT</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note-small">Project tasks are tracked in Linear, initiative CS Improvement Q4.</p>
+
+  <div class="footer">
+    <span>Edition 2 · Data source: credix-mainnet.chatwoot.public_* · Definitions: Aira baseline memo v3</span>
+    <span class="url">CREDIX.FINANCE</span>
+  </div>
+</div>
+</body>
+</html>
